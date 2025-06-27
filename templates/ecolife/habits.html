@@ -1,0 +1,23 @@
+{% extends "ecolife/base.html" %}
+
+{% block title %}Экологические привычки | EcoApp{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Мои экологические привычки</h1>
+
+    <div class="row mt-4">
+        {% for habit in habits %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{{ habit.name }}</h3>
+                    <p>{{ habit.description }}</p>
+                    <p class="text-success">Эко-баллы: {{ habit.impact_score }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

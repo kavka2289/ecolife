@@ -1,0 +1,38 @@
+{% extends 'ecolife/base.html' %}
+
+{% block title %}Главная страница | EcoApp{% endblock %}
+
+{% block content %}
+<div class="jumbotron bg-light p-5 rounded-lg">
+    <h1 class="display-4">Добро пожаловать в EcoApp!</h1>
+    <p class="lead">Приложение для формирования экологических привычек.</p>
+    <hr class="my-4">
+    <p>Начните свой путь к экологичному образу жизни прямо сейчас.</p>
+    <a class="btn btn-success btn-lg" href="{% url 'core:habits' %}" role="button">
+        Начать
+    </a>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <i class="fas fa-recycle fa-3x text-success mb-3"></i>
+                <h3>Пункты переработки</h3>
+                <p>Найдите ближайшие места для сдачи вторсырья</p>
+                <a href="{% url 'core:recycling_map' %}" class="btn btn-outline-success">
+                    Перейти к карте
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <!-- Аналогичные карточки -->
+    </div>
+
+    <div class="col-md-4">
+        <!-- Аналогичные карточки -->
+    </div>
+</div>
+{% endblock %}
