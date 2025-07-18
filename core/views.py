@@ -9,5 +9,14 @@ def habit_list(request):
     return render(request, 'ecolife/habits.html', {'habits': habits})
 
 def recycling_map(request):
-    points = RecyclingPoint.objects.all()  # Получаем все пункты переработки
-    return render(request, 'ecolife/map.html', {'points': points})
+    points = RecyclingPoint.objects.all()
+    points_data = [
+        {
+            'name': p.name,
+            'address': p.address,
+            'waste_type': p.waste_type,
+            'latitude': p.latitude,
+            'longitude': p.longitude
+        } for p in points
+    ]
+    return render(request, 'ecolife/map.html', {'points': points_data})

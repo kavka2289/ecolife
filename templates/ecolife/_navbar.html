@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'core:habits' %}">Привычки</a>
+                    <a class="nav-link {% if request.resolver_match.url_name == 'habits' %}active bg-light text-success fw-bold border rounded-pill px-3{% endif %}" href="{% url 'core:habits' %}">Привычки</a>
                 </li>
             </ul>
         </div>
