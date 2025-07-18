@@ -1,0 +1,28 @@
+{% extends 'ecolife/base.html' %}
+
+{% block title %}Карта переработки | EcoApp{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Карта пунктов переработки</h1>
+
+<div id="map" style="height: 500px;"></div>
+
+{{ points|json_script:"recycling-points" }}
+<script src="https://api-maps.yandex.ru/2.1/?apikey=ccc3d719-d120-4aca-8b9e-4455750e0f2e&lang=ru_RU"></script>
+<script>
+    ymaps.ready(function () {
+        var myMap = new ymaps.Map('map', {
+            center: [55.751574, 37.573856],
+            zoom: 10
+        });
+        var points = JSON.parse(document.getElementById('recycling-points').textContent);
+        points.forEach(function(point) {
+            var placemark = new ymaps.Placemark([point.latitude, point.longitude], {
+                balloonContentHeader: point.name,
+                balloonContentBody: point.address + '<br>Тип отходов: ' + point.waste_type
+            });
+            myMap.geoObjects.add(placemark);
+        });
+    });
+</script>
+{% endblock %}
